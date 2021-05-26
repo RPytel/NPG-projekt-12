@@ -1,6 +1,8 @@
+import math
+# napisana klasa real_numbers i kuba wzorujac sie na niej napisz complex_numbers
 class real_number:
     __slots__ = ['x','y','op']
-    def __init__(self,x,op,y ):
+    def __init__(self,x,op: str,y ):
 
         self.x=x
         self.y=y
@@ -21,7 +23,11 @@ class real_number:
         return self.x / self.y
 
     def __pow__(self): #metoda potęgowania
-        power = 1
-        for x in range(self.y):
-            power = power * self.x
-        return power
+        return math.pow(self.x ,self.y)
+        # power = 1
+        # for x in range(self.y):
+        #     power = power * self.x
+        # return power
+
+def root(x , y):
+    return math.pow(x,1/y)
