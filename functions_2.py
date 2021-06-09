@@ -9,7 +9,7 @@ class ComplexNumber(real_number):
         super().__init__(complex(x), op, complex(y))
 
     def __abs__(self):
-        """metoda obliczania modułu"""
+        """metoda obliczaniamodułu"""
         return abs(self.x)
 
     def atan(self):
