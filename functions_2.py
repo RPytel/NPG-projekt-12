@@ -12,5 +12,3 @@ class ComplexNumber(real_number):
     def __abs__(self):
         return abs(self.x)
 
-    def __tan__(self):
-        return cmath.atan(self.x.imag / self.x.real)
