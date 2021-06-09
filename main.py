@@ -29,7 +29,7 @@ def main():
                     print("Podaj liczbe zespoloną w posatci algebraiccznej (np. 4+5j): ")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), op="abs"))
                 elif user_operation == 3:
-                    print("Podaj liczbe zespoloną w posatci algebraiccznej(np. 4+5j): ")
+                    print("Podaj liczbe zespoloną w posatci algebraiccznej (np. 4+5j): ")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), op="atan"))
 
             else:
