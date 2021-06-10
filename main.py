@@ -18,7 +18,7 @@ def main():
                       "\nJeśli chcesz potęgować użyj operatora '^', a w przypadku pierwiastka 'pierw'")
                 list_of_op[x] = (real_number(int(input(" x: ")), input(" operator: "), int(input(" y: "))))
             elif num_type == 2:  #input dla liczb zespolonych
-                user_operation = int(input("Jakie operacje chcesz przeprowadzić na licznach zespolonych: \n "
+                user_operation = int(input("Jakie operacje chcesz przeprowadzić na liczbach zespolonych: \n "
                                            "1 -> podstawowe działania matematyczne \n "
                                            "2 -> moduł liczby zespolonej \n "
                                            "3 -> argument główny liczby zespolonej w radianach \n"))
