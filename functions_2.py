@@ -14,4 +14,4 @@ class ComplexNumber(real_number):
 
     def atan(self):
         """metoda obliczania argumentu głownego"""
-        return cmath.phase(self.x)*(180 / cmath.pi)
+        return cmath.phase(self.x)

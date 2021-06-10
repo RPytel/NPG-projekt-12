@@ -21,7 +21,7 @@ def main():
                 user_operation = int(input("Jakie operacje chcesz przeprowadzić na licznach zespolonych: \n "
                                            "1 -> podstawowe działania matematyczne \n "
                                            "2 -> moduł liczby zespolonej \n "
-                                           "3 -> argument główny liczby zespolonej \n"))
+                                           "3 -> argument główny liczby zespolonej w radianach \n"))
                 if user_operation == 1:
                     print("Podaj dane w formacie: \n liczba x \n operator \n liczba y")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), input("\toperator: "), input("\ty: ")))
