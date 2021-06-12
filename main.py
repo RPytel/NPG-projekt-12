@@ -7,7 +7,9 @@ from typing import List, Optional, Union
 # polecam opisywać to co zrobiliscie oraz rzucać wyjątki typu raise Exception("coś tam") żeby pilnować typów
 def main():
     list_of_op: List[Optional[Union[real_number, ComplexNumber]]] = [None] * 10
-    for x in range(0, 10):
+    list_of_op_size = 0
+    x = 0
+    while True:
         func = int(input("Wybierz co chcesz zrobić:\n 1 -> coś obliczyć \n 2 -> wczytać wcześniejsze działania "
                          " \n 3 -> wyczyścić pamięć \n"))  # początkowe menu
         if func == 1:  # if dla obliczeń
@@ -51,17 +53,40 @@ def main():
             elif list_of_op[x].op == 'atan':
                 print(list_of_op[x].atan())
 
+            list_of_op_size += 1
+            if list_of_op_size > 10:
+                list_of_op_size = 10
+            x = (x + 1) % 10
+
         if func == 2:  # if dla wczytywania zadań
-            pass
-            # Piotrek ~tablica list_of_op przechowuje 10 operacji, a gdy chcemy zapisać 11 zapisuje na miejscu pierwszej
-            # operacji, musisz wykminić coś co w przypadku gdy ktoś zapisał 15 operacji i chce wczytać 10 ostatnich no i
-            # ogolnie to wczytywanie
+            tmp = int(input("ile do tyłu,maksymalnie({}):".format(list_of_op_size)))
+            if tmp > list_of_op_size:
+                raise Exception("za daleko do tyłu")
+            else:
+                for i in range(tmp):
+                    x2 = (x - i - 1) % 10
+                    if list_of_op[x2].op == '+':
+                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x + list_of_op[x2].y))
+                    elif list_of_op[x2].op == '-':
+                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x - list_of_op[x2].y))
+                    elif list_of_op[x2].op == '*':
+                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x * list_of_op[x2].y))
+                    elif list_of_op[x2].op == '/':
+                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x / list_of_op[x2].y))
+                    elif list_of_op[x2].op == '^':
+                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x ** list_of_op[x2].y))
+                    elif list_of_op[x2].op == 'pierw':
+                        print("{} = {}".format(list_of_op[x2], root(list_of_op[x2].x, list_of_op[x2].y)))
+                    elif list_of_op[x2].op == 'abs':
+                        print("abs {} = {}".format(list_of_op[x2].x,abs(list_of_op[x2]) ))
+
+                    elif list_of_op[x2].op == 'atan':
+                        print("atan {} = {}".format(list_of_op[x2].x, list_of_op[x2].atan()))
 
         if func == 3:  # if dla czyszczenia pamięci
-            pass
+            list_of_op_size = 0
 
-        if x == 9:
-            x = 0
+
 
 
 if __name__ == '__main__':
