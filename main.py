@@ -34,6 +34,8 @@ def main():
                 elif user_operation == 3:
                     print("Podaj liczbe zespoloną w posatci algebraicznej (a+bj): ")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), op="atan"))
+                else:
+                    raise Exception("Błędne dane")
             elif num_type == 3: #input macierzy
                 print("Podaj dane w formacie: \n Macierz X \n operator \n Macierz Y \n"
                       "Jeśli chcesz mnożyć lub potęgować przez skalar lub dodać stałą wartość podaj rozmiar macierzy\n"
@@ -74,24 +76,51 @@ def main():
             else:
                 for i in range(tmp):
                     x2 = (x - i - 1) % 10
-                    if list_of_op[x2].op == '+':
-                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x + list_of_op[x2].y))
-                    elif list_of_op[x2].op == '-':
-                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x - list_of_op[x2].y))
-                    elif list_of_op[x2].op == '*':
-                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x * list_of_op[x2].y))
-                    elif list_of_op[x2].op == '/':
-                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x / list_of_op[x2].y))
-                    elif list_of_op[x2].op == '^':
-                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x ** list_of_op[x2].y))
-                    elif list_of_op[x2].op == 'pierw':
-                        print("{} = {}".format(list_of_op[x2], root(list_of_op[x2].x, list_of_op[x2].y)))
-                    elif list_of_op[x2].op == 'abs':
-                        print("abs {} = {}".format(list_of_op[x2].x, abs(list_of_op[x2])))
-                    elif list_of_op[x2].op == 'atan':
-                        print("atan {} = {}".format(list_of_op[x2].x, list_of_op[x2].atan()))
-                    elif list_of_op[x2].op == '@':
-                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x @ list_of_op[x2].y))
+                    try:
+                        complex(list_of_op[x2].x)
+                        if list_of_op[x2].op == '+':
+                            print("{} = {}".format(list_of_op[x2], list_of_op[x2].x + list_of_op[x2].y))
+                        elif list_of_op[x2].op == '-':
+                            print("{} = {}".format(list_of_op[x2], list_of_op[x2].x - list_of_op[x2].y))
+                        elif list_of_op[x2].op == '*':
+                            print("{} = {}".format(list_of_op[x2], list_of_op[x2].x * list_of_op[x2].y))
+                        elif list_of_op[x2].op == '/':
+                            print("{} = {}".format(list_of_op[x2], list_of_op[x2].x / list_of_op[x2].y))
+                        elif list_of_op[x2].op == '^':
+                            print("{} = {}".format(list_of_op[x2], list_of_op[x2].x ** list_of_op[x2].y))
+                        elif list_of_op[x2].op == 'pierw':
+                            print("{} = {}".format(list_of_op[x2], root(list_of_op[x2].x, list_of_op[x2].y)))
+                        elif list_of_op[x2].op == 'abs':
+                            print("abs {} = {}".format(list_of_op[x2].x, abs(list_of_op[x2])))
+                        elif list_of_op[x2].op == 'atan':
+                            print("atan {} = {}".format(list_of_op[x2].x, list_of_op[x2].atan()))
+                        elif list_of_op[x2].op == '@':
+                            print("{} = {}".format(list_of_op[x2], list_of_op[x2].x @ list_of_op[x2].y))
+                    except:
+                        if list_of_op[x2].op == '+':
+                            print("{} \n {} \n {} \n = \n {}\n".format(list_of_op[x2].x, list_of_op[x2].op,
+                                                                       list_of_op[x2].y,
+                                                                       list_of_op[x2].x + list_of_op[x2].y))
+                        elif list_of_op[x2].op == '-':
+                            print("{} \n {} \n {} \n = \n {}\n".format(list_of_op[x2].x, list_of_op[x2].op,
+                                                                       list_of_op[x2].y,
+                                                                       list_of_op[x2].x - list_of_op[x2].y))
+                        elif list_of_op[x2].op == '*':
+                            print("{} \n {} \n {} \n = \n {}\n".format(list_of_op[x2].x, list_of_op[x2].op,
+                                                                       list_of_op[x2].y,
+                                                                       list_of_op[x2].x * list_of_op[x2].y))
+                        elif list_of_op[x2].op == '/':
+                            print("{} \n {} \n {} \n = \n {}\n".format(list_of_op[x2].x, list_of_op[x2].op,
+                                                                       list_of_op[x2].y,
+                                                                       list_of_op[x2].x / list_of_op[x2].y))
+                        elif list_of_op[x2].op == '^':
+                            print("{} \n {} \n {} \n = \n {}\n".format(list_of_op[x2].x, list_of_op[x2].op,
+                                                                       list_of_op[x2].y,
+                                                                       list_of_op[x2].x ** list_of_op[x2].y))
+                        elif list_of_op[x2].op == '@':
+                            print("{} \n {} \n {} \n = \n {}\n".format(list_of_op[x2].x, list_of_op[x2].op,
+                                                                       list_of_op[x2].y,
+                                                                       list_of_op[x2].x @ list_of_op[x2].y))
 
         elif func == 3:  # if dla czyszczenia pamięci
             list_of_op_size = 0
