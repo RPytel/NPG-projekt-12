@@ -5,8 +5,11 @@ from typing import List
 class Matrix(RealNumber):
 
     def __init__(self, x, op: str, y):
-        """konstruktor liczby zespolonej"""
+        """konstruktor macierzy"""
         super().__init__(np.array(x), op, np.array(y))
+
+    def __matmul__(self): #metoda mnożenia macierzowego
+        return self.x @ self.y
 
     def input(self):
         lst: List[List[int]] = []
