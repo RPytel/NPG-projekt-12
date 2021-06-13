@@ -1,12 +1,13 @@
 from functions import real_number
 from functions import root
 from functions_2 import ComplexNumber
+from functions_3 import Matrix
 from typing import List, Optional, Union
 
 
 # polecam opisywać to co zrobiliscie oraz rzucać wyjątki typu raise Exception("coś tam") żeby pilnować typów
 def main():
-    list_of_op: List[Optional[Union[real_number, ComplexNumber]]] = [None] * 10
+    list_of_op: List[Optional[Union[real_number, ComplexNumber, Matrix]]] = [None] * 10
     list_of_op_size = 0
     x = 0
     while True:
@@ -14,7 +15,7 @@ def main():
                          " \n 3 -> wyczyścić pamięć \n"))  # początkowe menu
         if func == 1:  # if dla obliczeń
             num_type = int(input("Na jakich liczbach chcesz przeprowadzić działanie: \n 1 -> rzeczywistych \n"
-                                 " 2 -> zespolonych\n"))  # menu wyboru liczb dla obliczeń
+                                 " 2 -> zespolonych\n 3 -> macierzach kwadratowych\n"))  # menu wyboru liczb dla obliczeń
             if num_type == 1:  # input dla rzeczywistych
                 print("Podaj dane w formacie: \n liczba x \n operator \n liczba y"
                       "\nJeśli chcesz potęgować użyj operatora '^', a w przypadku pierwiastka 'pierw'")
@@ -28,11 +29,16 @@ def main():
                     print("Podaj dane w formacie: \n liczba x \n operator \n liczba y")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), input("\toperator: "), input("\ty: ")))
                 elif user_operation == 2:
-                    print("Podaj liczbe zespoloną w posatci algebraiccznej (np. 4+5j): ")
+                    print("Podaj liczbe zespoloną w posatci algebraicznej (np. 4+5j): ")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), op="abs"))
                 elif user_operation == 3:
-                    print("Podaj liczbe zespoloną w posatci algebraiccznej (np. 4+5j): ")
+                    print("Podaj liczbe zespoloną w posatci algebraicznej (np. 4+5j): ")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), op="atan"))
+            elif num_type == 3: #input macierzy
+                print("Podaj dane w formacie: \n Macierz X \n operator \n Macierz Y \n"
+                      "Jeśli chcesz mnożyć lub potęgować macierz przez skalar podaj rozmiar macierzy Y = 1 \n"
+                      "Jeśli chcesz mnożyć macierzowo użyj operatora '@', operator '*' wykonuje iloczyn Hadamarda")
+                list_of_op[x] = (Matrix(Matrix.input(Matrix.x), input(" operator: "), Matrix.input(Matrix.y)))
 
             else:
                 raise Exception("Błędne dane")
@@ -52,6 +58,8 @@ def main():
                 print(abs(list_of_op[x]))
             elif list_of_op[x].op == 'atan':
                 print(list_of_op[x].atan())
+            elif list_of_op[x].op == '@':
+                print(list_of_op[x].x @ list_of_op[x].y)
 
             list_of_op_size += 1
             if list_of_op_size > 10:
@@ -82,6 +90,8 @@ def main():
 
                     elif list_of_op[x2].op == 'atan':
                         print("atan {} = {}".format(list_of_op[x2].x, list_of_op[x2].atan()))
+                    elif list_of_op[x2].op == '@':
+                        print("{} = {}".format(list_of_op[x2], list_of_op[x2].x @ list_of_op[x2].y))
 
         if func == 3:  # if dla czyszczenia pamięci
             list_of_op_size = 0
