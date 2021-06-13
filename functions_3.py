@@ -1,8 +1,8 @@
 import numpy as np
-from functions import real_number
+from functions import RealNumber
 from typing import List
 
-class Matrix(real_number):
+class Matrix(RealNumber):
 
     def __init__(self, x, op: str, y):
         """konstruktor liczby zespolonej"""
@@ -11,6 +11,8 @@ class Matrix(real_number):
     def input(self):
         lst: List[List[int]] = []
         n = int(input("Podaj liczbę wierszy macierzy: "))
+        if n <= 0:
+            raise Exception("Nieprawidłowy rozmiar macierzy")
         for i in range(n):
             lst1: List[int] = []
             for j in range(n):

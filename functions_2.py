@@ -1,8 +1,8 @@
 import cmath
-from functions import real_number
+from functions import RealNumber
 
 
-class ComplexNumber(real_number):
+class ComplexNumber(RealNumber):
 
     def __init__(self, x, op: str = None, y = 0):
         """konstruktor liczby zespolonej"""
