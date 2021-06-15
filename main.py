@@ -28,7 +28,7 @@ def main():
                 if user_operation == 1:
                     print("Podaj dane w formacie: \n liczba x (a+bj) \n operator \n liczba y (a+bj)\n"
                           "Pamiętaj o kolejności!!! Wprowadzenie liczby w formacie a+jb spowoduje błąd")
-                    list_of_op[x] = (ComplexNumber(input("\tx: "), input("\toperator: "), ComplexNumber(input("\ty: "))))
+                    list_of_op[x] = (ComplexNumber(input("\tx: "), input("\toperator: "), input("\ty: ")))
                 elif user_operation == 2:
                     print("Podaj liczbe zespoloną w posatci algebraicznej (a+bj): ")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), op="abs"))
