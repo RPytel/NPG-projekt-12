@@ -3,13 +3,14 @@ from functions import root
 from functions_2 import ComplexNumber
 from functions_3 import Matrix
 from typing import List, Optional, Union
-
+from media import play_sound
 
 def main():
     list_of_op: List[Optional[Union[RealNumber, ComplexNumber, Matrix]]] = [None] * 10
     list_of_op_size = 0
     x = 0
     while True:
+        play_sound()
         func = int(input("Wybierz co chcesz zrobić:\n 1 -> coś obliczyć \n 2 -> wczytać wcześniejsze działania "
                          " \n 3 -> wyczyścić pamięć \n"))  # początkowe menu
         if func == 1:  # if dla obliczeń
@@ -27,7 +28,7 @@ def main():
                 if user_operation == 1:
                     print("Podaj dane w formacie: \n liczba x (a+bj) \n operator \n liczba y (a+bj)\n"
                           "Pamiętaj o kolejności!!! Wprowadzenie liczby w formacie a+jb spowoduje błąd")
-                    list_of_op[x] = (ComplexNumber(input("\tx: "), input("\toperator: "), input("\ty: ")))
+                    list_of_op[x] = (ComplexNumber(input("\tx: "), input("\toperator: "), ComplexNumber(input("\ty: "))))
                 elif user_operation == 2:
                     print("Podaj liczbe zespoloną w posatci algebraicznej (a+bj): ")
                     list_of_op[x] = (ComplexNumber(input("\tx: "), op="abs"))
