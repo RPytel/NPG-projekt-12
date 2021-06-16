@@ -1,5 +1,4 @@
 import math
-# napisana klasa real_numbers i kuba wzorujac sie na niej napisz complex_numbers
 class RealNumber:
     __slots__ = ['x','y','op']
     def __init__(self,x,op: str,y ):
